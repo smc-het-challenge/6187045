@@ -1,0 +1,30 @@
+<?xml version="1.0" ?><tool id="pupi" name="MOB" version="1.0.0">
+  <stdio>
+    <exit_code range="1:"/>
+  </stdio>
+  <requirements>
+    <container type="docker">docker.synapse.org/syn2813581/6187045/fichierdocker</container>
+  </requirements>
+  <command>
+  <![CDATA[
+	    python /opt/JR/merge_vcfBat.py ${VCF_FILE} ${CNA_FILE} ${META_TABLE} ; python /opt/JR/MOB.py ${META_TABLE} ${TC} ${NCP} ${MCS} ${ASM}
+]]>
+</command>
+  <inputs>
+        <param format="vcf" help="" label="VCF file" name="VCF_FILE" type="data"/>
+        <param format="txt" help="" label="CNA file" name="CNA_FILE" type="data"/>	
+  </inputs>
+  <outputs>
+	    <data format="tsv" label="META_TABLE file" name="META_TABLE"/>
+	    <data format="txt" label="Tumour cellularity file" name="TC"/>
+	    <data format="txt" label="Number of cancerous populations/clusters of mutations" name="NCP"/>
+	    <data format="txt" label="Mutation cluster sizes and cellular proportions" name="MCS"/>
+	    <data format="txt" label="Assigning mutations to clusters" name="ASM"/>
+  </outputs>
+  <help><![CDATA[- A mixture model based algorithm.]]>
+    
+<![CDATA[- Merge SNPs and CNVs from a vcf and a battenberg file.]]>
+    
+<![CDATA[- Output is then used by a mixture model algorithm.]]>
+  </help>
+</tool>

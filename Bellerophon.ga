@@ -1,0 +1,207 @@
+{
+    "a_galaxy_workflow": "true", 
+    "format-version": "0.1", 
+    "name": "Bellerophon", 
+    "steps": {
+        "1": {
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "CNA_INPUT"
+                }
+            ], 
+            "uuid": "318ee9c1-1632-4174-b151-e0995984fe19", 
+            "user_outputs": [], 
+            "tool_id": null, 
+            "outputs": [], 
+            "tool_version": null, 
+            "annotation": "", 
+            "input_connections": {}, 
+            "tool_errors": null, 
+            "position": {
+                "top": 287, 
+                "left": 278
+            }, 
+            "tool_state": "{\"name\": \"CNA_INPUT\"}", 
+            "label": null, 
+            "type": "data_input", 
+            "id": 1, 
+            "name": "Input dataset"
+        }, 
+        "0": {
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "VCF_INPUT"
+                }
+            ], 
+            "uuid": "cb574f59-7fef-4366-af67-bd617cf7e2aa", 
+            "user_outputs": [], 
+            "tool_id": null, 
+            "outputs": [], 
+            "tool_version": null, 
+            "annotation": "", 
+            "input_connections": {}, 
+            "tool_errors": null, 
+            "position": {
+                "top": 190, 
+                "left": 275
+            }, 
+            "tool_state": "{\"name\": \"VCF_INPUT\"}", 
+            "label": null, 
+            "type": "data_input", 
+            "id": 0, 
+            "name": "Input dataset"
+        }, 
+        "3": {
+            "tool_id": "smc_het_eval", 
+            "uuid": "5c8e9d8c-fc8e-47cb-b0a7-7181dc7268d2", 
+            "user_outputs": [], 
+            "tool_version": "0.1.0", 
+            "outputs": [
+                {
+                    "type": "txt", 
+                    "name": "outfile"
+                }
+            ], 
+            "post_job_actions": {}, 
+            "annotation": "", 
+            "input_connections": {
+                "proportion|predfile": {
+                    "output_name": "MCS", 
+                    "id": 2
+                }, 
+                "cellularity|predfile": {
+                    "output_name": "TC", 
+                    "id": 2
+                }, 
+                "cluster_assignment|predfile": {
+                    "output_name": "ASM", 
+                    "id": 2
+                }, 
+                "population|predfile": {
+                    "output_name": "NCP", 
+                    "id": 2
+                }
+            }, 
+            "inputs": [], 
+            "tool_errors": null, 
+            "position": {
+                "top": 165, 
+                "left": 862
+            }, 
+            "tool_state": "{\"cocluster_assignment\": \"{\\\"submit\\\": \\\"no\\\", \\\"__current_case__\\\": 1}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"proportion\": \"{\\\"predfile\\\": null, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}\", \"sample\": \"\\\"/opt/galaxy/data/Tumour2/Tumour2\\\"\", \"cellularity\": \"{\\\"predfile\\\": null, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}\", \"cluster_assignment\": \"{\\\"predfile\\\": null, \\\"phylogeny\\\": {\\\"submit\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}\", \"population\": \"{\\\"predfile\\\": null, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}\"}", 
+            "label": null, 
+            "type": "tool", 
+            "id": 3, 
+            "name": "SMC-Het Evaluator"
+        }, 
+        "2": {
+            "tool_id": "pupi", 
+            "uuid": "b6d0607e-9c63-455d-b843-be272b1be2be", 
+            "user_outputs": [], 
+            "tool_version": "1.0.0", 
+            "outputs": [
+                {
+                    "type": "tsv", 
+                    "name": "META_TABLE"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "TC"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "NCP"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "MCS"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "ASM"
+                }
+            ], 
+            "post_job_actions": {
+                "HideDatasetActionASM": {
+                    "output_name": "ASM", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "RenameDatasetActionNCP": {
+                    "output_name": "NCP", 
+                    "action_type": "RenameDatasetAction", 
+                    "action_arguments": {
+                        "newname": "predfile"
+                    }
+                }, 
+                "HideDatasetActionMCS": {
+                    "output_name": "MCS", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "HideDatasetActionNCP": {
+                    "output_name": "NCP", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "HideDatasetActionTC": {
+                    "output_name": "TC", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "HideDatasetActionMETA_TABLE": {
+                    "output_name": "META_TABLE", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "RenameDatasetActionMCS": {
+                    "output_name": "MCS", 
+                    "action_type": "RenameDatasetAction", 
+                    "action_arguments": {
+                        "newname": "predfile"
+                    }
+                }, 
+                "RenameDatasetActionTC": {
+                    "output_name": "TC", 
+                    "action_type": "RenameDatasetAction", 
+                    "action_arguments": {
+                        "newname": "predfile"
+                    }
+                }, 
+                "RenameDatasetActionASM": {
+                    "output_name": "ASM", 
+                    "action_type": "RenameDatasetAction", 
+                    "action_arguments": {
+                        "newname": "predfile"
+                    }
+                }
+            }, 
+            "annotation": "", 
+            "input_connections": {
+                "VCF_FILE": {
+                    "output_name": "output", 
+                    "id": 0
+                }, 
+                "CNA_FILE": {
+                    "output_name": "output", 
+                    "id": 1
+                }
+            }, 
+            "inputs": [], 
+            "tool_errors": null, 
+            "position": {
+                "top": 174, 
+                "left": 566
+            }, 
+            "tool_state": "{\"__page__\": 0, \"VCF_FILE\": \"null\", \"__rerun_remap_job_id__\": null, \"CNA_FILE\": \"null\"}", 
+            "label": null, 
+            "type": "tool", 
+            "id": 2, 
+            "name": "MOB"
+        }
+    }, 
+    "annotation": "", 
+    "uuid": "0c4147eb-c805-4cff-8357-eb7bde43a11d"
+}
